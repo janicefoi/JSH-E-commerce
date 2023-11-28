@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+            <button id="update-profile-btn" a href="{% url 'update_profile' %}">Update Profile</button>
+        </div>
+        <div class="navbar-search">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="navbar-dropdown">
+            <button class="category-button" id="category-button">Category</button>
+            <div class="category-content" id="category-content">
+                <a href="{% url 'category_items' 'Engine Parts' %}">Engine Parts</a>
+                <a href="{% url 'category_items' 'Electrical Parts' %}">Electrical Parts</a>
+                <a href="{% url 'category_items' 'Suspension and Steering' %}">Suspension and Steering</a>
+                <a href="{% url 'category_items' 'Transmission and Drivetrain' %}">Transmission and Drivetrain</a>
+                <a href="{% url 'category_items' 'Body and Frame' %}">Body and Frame</a>
+                <a href="{% url 'category_items' 'Accessories' %}">Accessories</a>
+                <a href="{% url 'category_items' 'Performance Upgrades' %}">Performance Upgrades</a>
+                <a href="{% url 'category_items' 'Maintenance and Care' %}">Maintenance and Care</a>
+                <a href="{% url 'category_items' 'Oils and Lubricants' %}">Oils and Lubricants</a>
+            </div>
+        </div>
+        <div class="navbar-icons">
+         <a href="{% url 'wishlist' %}">
+             <img src="{% static 'img/wishlist.png' %}" alt="Wishlist">
+             <span id="wishlist-count" class="wishlist-count"></span>
+         </a>
+         <a href="{% url 'cart' %}" class="cart-icon-container">
+             <img src="{% static 'img/cart.png' %}" alt="Cart">
+             <span id="cart-item-count" class="cart-count"></span>
+         </a>
+         <div class="user-avatar">
+             {{ user.username.0 }}
+         </div>
+     </div>  
+    </nav>
+    <div class="item-container">
+      {% if wishlist_items %}
+          {% for item in wishlist_items %}
+              <div class="item-card">
+                  <img src="{{ item.image.url }}" alt="{{ item.name }}" class="item-image">
+                  <div class="item-details">
+                      <h3 class="item-name">{{ item.name }}</h3>
+                      <p class="item-brand">Brand: {{ item.brand }}</p>
+                      <p class="item-price">Ksh {{ item.price }}</p>
+                  </div>
+                  <div class="item-actions">
+                      <button class="quantity-btn" data-item-id="{{ item.id }}" data-quantity="1">-</button>
+                      <span class="item-quantity" data-item-id="{{ item.id }}">1</span>
+                      <button class="quantity-btn" data-item-id="{{ item.id }}" data-quantity="1">+</button>
+                      <button class="add-to-cart-btn" data-item-id="{{ item.id }}">Add to Cart</button>
+                    
+                      <i class="fas fa-heart wishlist-icon" data-item-id="{{ item.id }}"></i>
+                  </div>
+              </div>
+          {% endfor %}
+      {% else %}
+          <p>Your wishlist is empty.</p>
+      {% endif %}
+  </div>  
+    <script src="{% static 'js/dashboard.js' %}"></script>        
+    </body>
+</html>

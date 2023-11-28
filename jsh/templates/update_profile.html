@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+</head>
+<body>
+    <div class="update-profile">
+        <div id="container">
+            <div id="content">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="{{ email_form.email.id_for_label }}">Email:</label>
+                        {{ email_form.email }}
+                    </div>
+                    <div class="form-row">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" placeholder="Enter your location as 'latitude,longitude'">
+                        <div id="map" style="height: 400px;"></div>
+                    </div>
+                    <div class="form-row">
+                        <label for="{{ profile_form.phone_number.id_for_label }}">Phone Number:</label>
+                        <select id="country_code" name="country_code">
+                            <option value="+1">+1 (US)</option>
+                            <option value("+20">+20 (Egypt)</option>
+                            <option value("+27">+27 (South Africa)</option>
+                            <option value("+30">+30 (Greece)</option>
+                            <option value("+31">+31 (Netherlands)</option>
+                            <option value("+32">+32 (Belgium)</option>
+                            <option value("+33">+33 (France)</option>
+                            <option value("+34">+34 (Spain)</option>
+                            <option value("+36">+36 (Hungary)</option>
+                            <option value("+39">+39 (Italy)</option>
+                            <option value("+41">+41 (Switzerland)</option>
+                            <option value("+44">+44 (Canada)</option>
+                            <option value("+44">+44 (UK)</option>
+                            <option value("+45">+45 (Denmark)</option>
+                            <option value("+46">+46 (Sweden)</option>
+                            <option value("+48">+48 (Poland)</option>
+                            <option value("+49">+49 (Germany)</option>
+                            <option value("+51">+51 (Peru)</option>
+                            <option value("+52">+52 (Mexico)</option>
+                            <option value("+55">+55 (Argentina)</option>
+                            <option value("+55">+55 (Brazil)</option>
+                            <option value("+58">+58 (Venezuela)</option>
+                            <option value("+60">+60 (Malaysia)</option>
+                            <option value("+61">+61 (Australia)</option>
+                            <option value("+62">+62 (Indonesia)</option>
+                            <option value("+63">+63 (Philippines)</option>
+                            <option value("+64">+64 (New Zealand)</option>
+                            <option value("+65">+65 (Singapore)</option>
+                            <option value("+66">+66 (Thailand)</option>
+                            <option value("+7">+7 (Russia)</option>
+                            <option value("+82">+82 (South Korea)</option>
+                            <option value("+84">+84 (Vietnam)</option>
+                            <option value("+86">+86 (China)</option>
+                            <option value("+91">+91 (India)</option>
+                            <option value("+92">+92 (Pakistan)</option>
+                            <option value("+971">+971 (United Arab Emirates)</option>
+                            <option value("+972">+972 (Israel)</option>
+                            <option value("+254">+254 (Kenya)</option>
+                            <option value("+358">+358 (Finland)</option>
+                            <option value("+380">+380 (Ukraine)</option>
+                            <option value("+886">+886 (Taiwan)</option>
+                            <option value("+90">+90 (Turkey)</option>
+                            <option value("+234">+234 (Nigeria)</option>
+                            <option value("+260">+260 (Zambia)</option>
+                            <option value("+263">+263 (Zimbabwe)</option>
+                            <!-- Add more options for other countries -->
+                        </select> 
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="1234567890">
+                    </div>
+                    <div class="submit-row">
+                        <button type="submit">Update</button>
+                    </div>
+                    <input type="hidden" id="selected_location" name="selected_location">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+        <script>
+            function initLeafletMap() {
+                // Creating map options
+                var mapOptions = {
+                    center: [0, 0],
+                    zoom: 13
+                };
+                map = L.map('map', mapOptions);
+                var layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                });
+                map.addLayer(layer);
+                var marker;
+                // Add an event listener for the location input field
+                var locationInput = document.getElementById('location');
+                locationInput.addEventListener('change', function () {
+                    var location = locationInput.value;
+            
+                    // Use geocoding to convert the location to coordinates
+                    var geocoder = new geopy.Nominatim();
+                    geocoder.geocode(location, { format: 'json' }).then(function (result) {
+                        if (result.length > 0) {
+                            var coordinates = result[0].location;
+                            var lat = parseFloat(coordinates.lat);
+                            var lng = parseFloat(coordinates.lon);
+            
+                            if (!isNaN(lat) && !isNaN(lng)) {
+                                var newLatLng = L.latLng(lat, lng);
+                                map.setView(newLatLng, 13);
+                                if (marker) {
+                                    map.removeLayer(marker);
+                                }
+                                marker = L.marker(newLatLng).addTo(map);
+                                document.getElementById('selected_location').value = JSON.stringify(newLatLng);
+                            }
+                        }
+                    });
+                });
+            }
+        </script>
+</html>

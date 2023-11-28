@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+</head>
+<body>
+    <div class="registration">
+        <div id="container">
+            <div id="header">
+                <h1><a href="new_time_off">User Registration</a></h1>
+            </div>
+            <div id="content">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="{{ form.email.id_for_label }}">Email:</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-row">
+                        <label for="{{ form.username.id_for_label }}">UserName:</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-row">
+                        <label for="{{ form.password1.id_for_label }}">Password:</label>
+                        {{ form.password1 }}        
+                    </div>
+                    <div class="form-row">
+                        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                        {{ form.password2 }}
+                        <!-- Display password2 errors -->
+                        {{ form.password1.errors }}
+                        {{ form.password2.errors }}
+                    </div>
+                    <div class="submit-row">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+                <div class="login-link">
+                    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

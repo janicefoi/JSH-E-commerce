@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="dashboard-left">
+            <img src="{% static 'img/logo.png' %}" alt="Logo">
+            <p>Welcome to JSH online store</p>
+        </div>
+        <div class="dashboard-right">
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'registration' %}">Sign Up</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="image-container">
+            <div class="image full-width" style="background-image: url('{% static 'img/home3.jpeg' %}');">
+                <div class="image-content">
+                    <h1>Welcome to JSH Trading Ltd - Your Destination for Quality Motorcycle Spare Parts in Eldoret, Kenya!</h1>
+                    <p>🛵✨ Celebrating 15 Years of Excellence in Service and Quality ✨🛵</p>
+                    <p>At JSH Trading Ltd, we are more than just a business; we're a passionate community of motorcycle enthusiasts who understand the importance of reliable spare parts to keep your ride on the road and running smoothly. For 15 years, we've been your trusted partner for all things motorcycles, and we're thrilled to welcome you to our online home.</p>
+                    <a class="shop-now-button" href="dashboard">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+        </div>        
+        <div class="image-container">
+            <div class="image" style="background-image: url('{% static 'img/wheels.jpeg' %}');">
+                <div class="image-content">
+                    <h1>Get durable motorcycle wheels and tires at an affordable price</h1>
+                    <a class="shop-now-button" href="{% url 'category_items' 'Body and Frame' %}">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="image" style="background-image: url('{% static 'img/oils.jpeg' %}');">
+                <div class="image-content">
+                    <h1>Get Oils and Lubricants at wholesale price</h1>
+                    <a class="shop-now-button" href="{% url 'category_items' 'Oils and Lubricants' %}">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="image" style="background-image: url('{% static 'img/headlights.jpeg' %}');">
+                <div class="image-content">
+                    <h1>Discover our latest collection of high-quality headlights for your vehicles</h1>
+                    <a class="shop-now-button" href="{% url 'category_items' 'Electrical Parts' %}">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

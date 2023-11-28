@@ -1,0 +1,74 @@
+/* REGISTRATION FORM */
+
+.registration {
+    background: var(--darkened-bg);
+    height: auto;
+}
+
+.registration #header {
+    height: auto;
+    padding: 15px 16px;
+    justify-content: center;
+}
+
+.registration #header h1 {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.registration #header h1 a {
+    color: var(--header-link-color);
+}
+
+.registration #content {
+    padding: 20px 20px 0;
+}
+
+.registration #container {
+    background: var(--body-bg);
+    border: 1px solid var(--hairline-color);
+    border-radius: 4px;
+    overflow: hidden;
+    width: 28em;
+    min-width: 300px;
+    margin: 100px auto;
+    height: auto;
+}
+
+.registration .form-row {
+    padding: 4px 0;
+}
+
+.registration .form-row label {
+    display: block;
+    line-height: 2em;
+}
+
+.registration .form-row #id_email,
+.registration .form-row #id_username,
+.registration .form-row #id_password1,
+.registration .form-row #id_password2 {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.registration .submit-row {
+    padding: 1em 0 0 0;
+    margin: 0;
+    text-align: center;
+}
+
+/* Target the button element and modify its size and color */
+.registration .submit-row button {
+    background-color: lightblue; /* Light blue color */
+    color: white; /* Text color */
+    padding: 12px 20px; /* Increase padding to make it bigger */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.registration .login-link {
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="login">
+        <div id="container">
+            <div id="header">
+                <h1><a href="new_time_off">Login</a></h1>
+            </div>
+            <div id="content">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="id_username">Email:</label>
+                        <input type="text" name="username" id="id_username">
+                    </div>
+                    <div class="form-row">
+                        <label for="id_password">Password:</label>
+                        <input type="password" name="password" id="id_password">
+                    </div>
+                    <div class="submit-row">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+                <div class="password-reset-link">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
