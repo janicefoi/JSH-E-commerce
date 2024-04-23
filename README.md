@@ -1,4 +1,5 @@
-E-Commerce Platform
+### **_E-COMMERCE PLATFORM_**
+
 This is an e-commerce platform built using Django and PostgreSQL, designed to provide users with a seamless shopping experience. The platform allows users to register, browse products, create wishlists, add items to their cart, and place orders.
 
 Features:
