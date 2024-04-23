@@ -9,9 +9,10 @@ Wishlist: Users can create and manage wishlists, saving items they're interested
 Shopping Cart: Users can add items to their cart and proceed to checkout to place orders.
 Order Management: Users can view and manage their orders, including order history and status updates.
 
-![Screenshot 1](Screenshot_2024-04-23_at_09.27.51.png)
-![Screenshot 2](Screenshot_2024-04-23_at_09.27.54.png)
-![Screenshot 3](Screenshot_2024-04-23_at_09.31.16.png)
-![Screenshot 4](Screenshot_2024-04-23_at_09.47.57.png)
-![Screenshot 5](Screenshot_2024-04-23_at_09.48.37.png)
-![Screenshot 6](Screenshot_2024-04-23_at_09.48.55.png)
+![Screenshot 1](/Screenshot%202024-04-23%20at%2009.27.51.png)
+![Screenshot 2](/Screenshot%202024-04-23%20at%2009.27.54.png)
+![Screenshot 3](/Screenshot%202024-04-23%20at%2009.31.16.png)
+![Screenshot 4](/Screenshot%202024-04-23%20at%2009.47.57.png)
+![Screenshot 5](/Screenshot%202024-04-23%20at%2009.48.37.png)
+![Screenshot 6](/Screenshot%202024-04-23%20at%2009.48.55.png)
+
